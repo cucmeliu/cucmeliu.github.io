@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Apache Hadoop | 上海科鹄网络科技有限公司</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本简介Hadoop是一个由Apache基金会所开发的分布式系统基础架构。 用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。 Hadoop实现了一个分布式文件系统(Hadoop Distributed File System)，简称HDFS。HDFS有高容错性的特点，并且设计用来部署在低廉的(low-cost)硬件上;而且它提供高吞吐量(high th">
+<meta name="keywords" content="Big Data,Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Apache Hadoop">
+<meta property="og:url" content="http://ikohoo.com/blog/2016/03/01/20160301Hadoop/index.html">
+<meta property="og:site_name" content="上海科鹄网络科技有限公司">
+<meta property="og:description" content="基本简介Hadoop是一个由Apache基金会所开发的分布式系统基础架构。 用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。 Hadoop实现了一个分布式文件系统(Hadoop Distributed File System)，简称HDFS。HDFS有高容错性的特点，并且设计用来部署在低廉的(low-cost)硬件上;而且它提供高吞吐量(high th">
+<meta property="og:updated_time" content="2017-06-19T10:37:15.456Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Apache Hadoop">
+<meta name="twitter:description" content="基本简介Hadoop是一个由Apache基金会所开发的分布式系统基础架构。 用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。 Hadoop实现了一个分布式文件系统(Hadoop Distributed File System)，简称HDFS。HDFS有高容错性的特点，并且设计用来部署在低廉的(low-cost)硬件上;而且它提供高吞吐量(high th">
+  
+    <link rel="alternate" href="/atom.xml" title="上海科鹄网络科技有限公司" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">上海科鹄网络科技有限公司</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">国内领先的云计算和大数据解决方案咨询服务商</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ikohoo.com/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20160301Hadoop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/03/01/20160301Hadoop/" class="article-date">
+  <time datetime="2016-03-01T08:28:15.000Z" itemprop="datePublished">2016-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/Big-Data/">Big Data</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Apache Hadoop
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本简介"><a href="#基本简介" class="headerlink" title="基本简介"></a>基本简介</h2><p>Hadoop是一个由Apache基金会所开发的分布式系统基础架构。</p>
+<p>用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。</p>
+<p>Hadoop实现了一个分布式文件系统(Hadoop Distributed File System)，简称HDFS。HDFS有高容错性的特点，并且设计用来部署在低廉的(low-cost)硬件上;而且它提供高吞吐量(high throughput)来访问应用程序的数据，适合那些有着超大数据集(large data set)的应用程序。HDFS放宽了(relax)POSIX的要求，可以以流的形式访问(streaming access)文件系统中的数据。</p>
+<p>Hadoop的框架最核心的设计就是:HDFS和MapReduce。HDFS为海量的数据提供了存储，则MapReduce为海量的数据提供了计算。</p>
+<a id="more"></a>
+<h2 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h2><p>项目起源</p>
+<p>Hadoop由 Apache Software Foundation 公司于 2005 年秋天作为Lucene的子项目Nutch的一部分正式引入。它受到最先由 Google Lab 开发的 Map/Reduce 和 Google File System(GFS) 的启发。</p>
+<p>2006 年 3 月份，Map/Reduce 和 Nutch Distributed File System (NDFS) 分别被纳入称为 Hadoop 的项目中。</p>
+<p>Hadoop 是最受欢迎的在 Internet 上对搜索关键字进行内容分类的工具，但它也可以解决许多要求极大伸缩性的问题。例如，如果您要 grep 一个 10TB 的巨型文件，会出现什么情况?在传统的系统上，这将需要很长的时间。但是 Hadoop 在设计时就考虑到这些问题，采用并行执行机制，因此能大大提高效率。</p>
+<p>发展历程</p>
+<p>Hadoop原本来自于谷歌一款名为MapReduce的编程模型包。谷歌的MapReduce框架可以把一个应用程序分解为许多并行计算指令，跨大量的计算节点运行非常巨大的数据集。使用该框架的一个典型例子就是在网络数据上运行的搜索算法。Hadoop 最初只与网页索引有关，迅速发展成为分析大数据的领先平台。</p>
+<p>目前有很多公司开始提供基于Hadoop的商业软件、支持、服务以及培训。Cloudera是一家美国的企业软件公司，该公司在2008年开始提供基于Hadoop的软件和服务。GoGrid是一家云计算基础设施公司，在2012年，该公司与Cloudera合作加速了企业采纳基于Hadoop应用的步伐。Dataguise公司是一家数据安全公司，同样在2012年该公司推出了一款针对Hadoop的数据保护和风险评估。</p>
+<p>名字起源</p>
+<p>Hadoop这个名字不是一个缩写，而是一个虚构的名字。该项目的创建者，Doug Cutting解释Hadoop的得名 :”这个名字是我孩子给一个棕黄色的大象玩具命名的。我的命名标准就是简短，容易发音和拼写，没有太多的意义，并且不会被用于别处。小孩子恰恰是这方面的高手。”</p>
+<p>Hadoop的发音是 [hædu:p]。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>Hadoop是一个能够对大量数据进行分布式处理的软件框架。 Hadoop 以一种可靠、高效、可伸缩的方式进行数据处理。</p>
+<p>Hadoop 是可靠的，因为它假设计算元素和存储会失败，因此它维护多个工作数据副本，确保能够针对失败的节点重新分布处理。</p>
+<p>Hadoop 是高效的，因为它以并行的方式工作，通过并行处理加快处理速度。</p>
+<p>Hadoop 还是可伸缩的，能够处理 PB 级数据。</p>
+<p>此外，Hadoop 依赖于社区服务，因此它的成本比较低，任何人都可以使用。</p>
+<p>Hadoop是一个能够让用户轻松架构和使用的分布式计算平台。用户可以轻松地在Hadoop上开发和运行处理海量数据的应用程序。它主要有以下几个优点:</p>
+<p>Hadoop带有用Java语言编写的框架，因此运行在 Linux 生产平台上是非常理想的。Hadoop 上的应用程序也可以使用其他语言编写，比如 C++。</p>
+<p>hadoop大数据处理的意义</p>
+<p>Hadoop得以在大数据处理应用中广泛应用得益于其自身在数据提取、变形和加载(ETL)方面上的天然优势。Hadoop的分布式架构，将大数据处理引擎尽可能的靠近存储，对例如像ETL这样的批处理操作相对合适，因为类似这样操作的批处理结果可以直接走向存储。Hadoop的MapReduce功能实现了将单个任务打碎，并将碎片任务(Map)发送到多个节点上，之后再以单个数据集的形式加载(Reduce)到数据仓库里。</p>
+<h2 id="核心架构"><a href="#核心架构" class="headerlink" title="核心架构"></a>核心架构</h2><p>Hadoop 由许多元素构成。其最底部是 Hadoop Distributed File System(HDFS)，它存储 Hadoop 集群中所有存储节点上的文件。HDFS(对于本文)的上一层是MapReduce 引擎，该引擎由 JobTrackers 和 TaskTrackers 组成。通过对Hadoop分布式计算平台最核心的分布式文件系统HDFS、MapReduce处理过程，以及数据仓库工具Hive和分布式数据库Hbase的介绍，基本涵盖了Hadoop分布式平台的所有技术核心。</p>
+<p>HDFS</p>
+<p>对外部客户机而言，HDFS就像一个传统的分级文件系统。可以创建、删除、移动或重命名文件，等等。但是 HDFS 的架构是基于一组特定的节点构建的(参见图 1)，这是由它自身的特点决定的。这些节点包括 NameNode(仅一个)，它在 HDFS 内部提供元数据服务;DataNode，它为 HDFS 提供存储块。由于仅存在一个 NameNode，因此这是 HDFS 的一个缺点(单点失败)。</p>
+<p>存储在 HDFS 中的文件被分成块，然后将这些块复制到多个计算机中(DataNode)。这与传统的 RAID 架构大不相同。块的大小(通常为 64MB)和复制的块数量在创建文件时由客户机决定。NameNode 可以控制所有文件操作。HDFS 内部的所有通信都基于标准的 TCP/IP 协议。</p>
+<p>NameNode</p>
+<p>NameNode 是一个通常在 HDFS 实例中的单独机器上运行的软件。它负责管理文件系统名称空间和控制外部客户机的访问。NameNode 决定是否将文件映射到 DataNode 上的复制块上。对于最常见的 3 个复制块，第一个复制块存储在同一机架的不同节点上，最后一个复制块存储在不同机架的某个节点上。注意，这里需要您了解集群架构。</p>
+<p>实际的 I/O事务并没有经过 NameNode，只有表示 DataNode 和块的文件映射的元数据经过 NameNode。当外部客户机发送请求要求创建文件时，NameNode 会以块标识和该块的第一个副本的 DataNode IP 地址作为响应。这个 NameNode 还会通知其他将要接收该块的副本的 DataNode。</p>
+<p>NameNode 在一个称为 FsImage 的文件中存储所有关于文件系统名称空间的信息。这个文件和一个包含所有事务的记录文件(这里是 EditLog)将存储在 NameNode 的本地文件系统上。FsImage 和 EditLog 文件也需要复制副本，以防文件损坏或 NameNode 系统丢失。</p>
+<p>NameNode本身不可避免地具有SPOF(Single Point Of Failure)单点失效的风险，主备模式并不能解决这个问题，通过Hadoop Non-stop namenode才能实现100% uptime可用时间。</p>
+<p>DataNode</p>
+<p>DataNode 也是一个通常在 HDFS实例中的单独机器上运行的软件。Hadoop 集群包含一个 NameNode 和大量 DataNode。DataNode 通常以机架的形式组织，机架通过一个交换机将所有系统连接起来。Hadoop 的一个假设是:机架内部节点之间的传输速度快于机架间节点的传输速度。</p>
+<p>DataNode 响应来自 HDFS 客户机的读写请求。它们还响应来自 NameNode 的创建、删除和复制块的命令。NameNode 依赖来自每个 DataNode 的定期心跳(heartbeat)消息。每条消息都包含一个块报告，NameNode 可以根据这个报告验证块映射和其他文件系统元数据。如果 DataNode 不能发送心跳消息，NameNode 将采取修复措施，重新复制在该节点上丢失的块。</p>
+<p>文件操作</p>
+<p>可见，HDFS 并不是一个万能的文件系统。它的主要目的是支持以流的形式访问写入的大型文件。</p>
+<p>如果客户机想将文件写到 HDFS 上，首先需要将该文件缓存到本地的临时存储。如果缓存的数据大于所需的 HDFS 块大小，创建文件的请求将发送给 NameNode。NameNode 将以 DataNode 标识和目标块响应客户机。</p>
+<p>同时也通知将要保存文件块副本的 DataNode。当客户机开始将临时文件发送给第一个 DataNode 时，将立即通过管道方式将块内容转发给副本 DataNode。客户机也负责创建保存在相同 HDFS名称空间中的校验和(checksum)文件。</p>
+<p>在最后的文件块发送之后，NameNode 将文件创建提交到它的持久化元数据存储(在 EditLog 和 FsImage 文件)。</p>
+<p>Linux集群</p>
+<p>Hadoop 框架可在单一的 Linux 平台上使用(开发和调试时)，官方提供MiniCluster作为单元测试使用，不过使用存放在机架上的商业服务器才能发挥它的力量。这些机架组成一个 Hadoop 集群。它通过集群拓扑知识决定如何在整个集群中分配作业和文件。Hadoop 假定节点可能失败，因此采用本机方法处理单个计算机甚至所有机架的失败。</p>
+<h2 id="集群系统"><a href="#集群系统" class="headerlink" title="集群系统"></a>集群系统</h2><p>Google的数据中心使用廉价的Linux PC机组成集群，在上面运行各种应用。即使是分布式开发的新手也可以迅速使用Google的基础设施。核心组件是3个:</p>
+<p>⒈GFS(Google File System)。一个分布式文件系统，隐藏下层负载均衡，冗余复制等细节，对上层程序提供一个统一的文件系统API接口。Google根据自己的需求对它进行了特别优化，包括:超大文件的访问，读操作比例远超过写操作，PC机极易发生故障造成节点失效等。GFS把文件分成64MB的块，分布在集群的机器上，使用Linux的文件系统存放。同时每块文件至少有3份以上的冗余。中心是一个Master节点，根据文件索引，找寻文件块。详见Google的工程师发布的GFS论文。</p>
+<p>⒉MapReduce。Google发现大多数分布式运算可以抽象为MapReduce操作。Map是把输入Input分解成中间的Key/Value对，Reduce把Key/Value合成最终输出Output。这两个函数由程序员提供给系统，下层设施把Map和Reduce操作分布在集群上运行，并把结果存储在GFS上。</p>
+<p>⒊BigTable。一个大型的分布式数据库，这个数据库不是关系式的数据库。像它的名字一样，就是一个巨大的表格，用来存储结构化的数据。</p>
+<p>以上三个设施Google均有论文发表。</p>
+<h2 id="子项目"><a href="#子项目" class="headerlink" title="子项目"></a>子项目</h2><p>Hadoop Common: 在0.20及以前的版本中，包含HDFS、MapReduce和其他项目公共内容，从0.21开始HDFS和MapReduce被分离为独立的子项目，其余内容为Hadoop Common</p>
+<p>HDFS: Hadoop分布式文件系统(Distributed File System) - HDFS (Hadoop Distributed File System)</p>
+<p>MapReduce:并行计算框架，0.20前使用 org.apache.hadoop.mapred 旧接口，0.20版本开始引入org.apache.hadoop.mapreduce的新API</p>
+<p>HBase: 类似Google BigTable的分布式NoSQL列数据库。(HBase和Avro已经于2010年5月成为顶级 Apache 项目)</p>
+<p>Hive:数据仓库工具，由Facebook贡献。</p>
+<p>Zookeeper:分布式锁设施，提供类似Google Chubby的功能，由Facebook贡献。</p>
+<p>Avro:新的数据序列化格式与传输工具，将逐步取代Hadoop原有的IPC机制。</p>
+<p>Pig: 大数据分析平台，为用户提供多种接口。</p>
+<p>Ambari:Hadoop管理工具，可以快捷的监控、部署、管理集群。</p>
+<p>Sqoop:于在HADOOP与传统的数据库间进行数据的传递。</p>
+<h2 id="大事记"><a href="#大事记" class="headerlink" title="大事记"></a>大事记</h2><p>2011年12月27日–1.0.0版本释出。标志着Hadoop已经初具生产规模。</p>
+<p>2009年4月– 赢得每分钟排序，59秒内排序500 GB(在1400个节点上)和173分钟内排序100 TB数据(在3400个节点上)。</p>
+<p>2009年3月– 17个集群总共24 000台机器。</p>
+<p>2008年10月– 研究集群每天装载10 TB的数据。</p>
+<p>2008年4月– 赢得世界最快1 TB数据排序在900个节点上用时209秒。</p>
+<p>2007年4月– 研究集群达到两个1000个节点的集群。</p>
+<p>2007年1月– 研究集群到达900个节点。</p>
+<p>2006年12月– 标准排序在20个节点上运行1.8个小时，100个节点3.3小时，500个节点5.2小时，900个节点7.8个小时。</p>
+<p>2006年11月– 研究集群增加到600个节点。</p>
+<p>2006年5月– 标准排序在500个节点上运行42个小时(硬件配置比4月的更好)。</p>
+<p>2006年5月– 雅虎建立了一个300个节点的Hadoop研究集群。</p>
+<p>2006年4月– 标准排序(10 GB每个节点)在188个节点上运行47.9个小时。</p>
+<p>2006年2月– 雅虎的网格计算团队采用Hadoop。</p>
+<p>2006年2月– Apache Hadoop项目正式启动以支持MapReduce和HDFS的独立发展。</p>
+<p>2006年1月– Doug Cutting加入雅虎。</p>
+<p>2005年12月– Nutch移植到新的框架，Hadoop在20个节点上稳定运行。</p>
+<p>2004年– 最初的版本(称为HDFS和MapReduce)由Doug Cutting和Mike Cafarella开始实施。</p>
+<h2 id="信息安全"><a href="#信息安全" class="headerlink" title="信息安全"></a>信息安全</h2><p>通过Hadoop安全部署经验总结，开发出以下十大建议，以确保大型和复杂多样环境下的数据信息安全。</p>
+<p>1、先下手为强!在规划部署阶段就确定数据的隐私保护策略，最好是在将数据放入到Hadoop之前就确定好保护策略。</p>
+<p>2、确定哪些数据属于企业的敏感数据。根据公司的隐私保护政策，以及相关的行业法规和政府规章来综合确定。</p>
+<p>3、及时发现敏感数据是否暴露在外，或者是否导入到Hadoop中。</p>
+<p>4、搜集信息并决定是否暴露出安全风险。</p>
+<p>5、确定商业分析是否需要访问真实数据，或者确定是否可以使用这些敏感数据。然后，选择合适的加密技术。如果有任何疑问，对其进行加密隐藏处理，同时提供最安全的加密技术和灵活的应对策略，以适应未来需求的发展。</p>
+<p>6、确保数据保护方案同时采用了隐藏和加密技术，尤其是如果我们需要将敏感数据在Hadoop中保持独立的话。</p>
+<p>7、确保数据保护方案适用于所有的数据文件，以保存在数据汇总中实现数据分析的准确性。</p>
+<p>8、确定是否需要为特定的数据集量身定制保护方案，并考虑将Hadoop的目录分成较小的更为安全的组。</p>
+<p>9、确保选择的加密解决方案可与公司的访问控制技术互操作，允许不同用户可以有选择性地访问Hadoop集群中的数据。</p>
+<p>10、确保需要加密的时候有合适的技术(比如Java、Pig等)可被部署并支持无缝解密和快速访问数据。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ikohoo.com/blog/2016/03/01/20160301Hadoop/" data-id="cj43yne1k0006dotk4ifsry4o" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Big-Data/">Big Data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hadoop/">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2016/03/06/20160306Hbase/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          HBase
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/02/08/20160208Bigdata/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Bigdata大数据</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/CloudCompute/">CloudCompute</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Big-Data/">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CloudStack/">CloudStack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eucalyptus/">Eucalyptus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/FusionCloud/">FusionCloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HBase/">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hadoop/">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Openstack/">Openstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/cloudcompute/">cloudcompute</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI/" style="font-size: 10px;">AI</a> <a href="/blog/tags/Big-Data/" style="font-size: 15px;">Big Data</a> <a href="/blog/tags/CloudStack/" style="font-size: 10px;">CloudStack</a> <a href="/blog/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/blog/tags/Eucalyptus/" style="font-size: 10px;">Eucalyptus</a> <a href="/blog/tags/FusionCloud/" style="font-size: 10px;">FusionCloud</a> <a href="/blog/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/blog/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/blog/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/blog/tags/cloudcompute/" style="font-size: 20px;">cloudcompute</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/06/">June 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2017/02/08/20170208AI/">人工智能</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/06/01/20160601Spark/">Apache Spark</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/05/01/20160501Hive/">Hive</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/03/06/20160306Hbase/">HBase</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/03/01/20160301Hadoop/">Apache Hadoop</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Leo.Liu<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>
