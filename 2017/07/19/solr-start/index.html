@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Solr使用入门指南 | 上海科鹄网络科技有限公司</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文转自 http://chuanliang2007.spaces.live.com/blog/cns!E5B7AB2851A4C9D2!499.entry?wa=wsignin1.0 由于搜索引擎功能在门户社区中对提高用户体验有着重在门户社区中涉及大量需要搜索引擎的功能需求，目前在实现搜索引擎的方案上有集中方案可供选择：  基于Lucene自己进行封装实现站内搜索。工作量及扩展性都较大，不采用。">
+<meta name="keywords" content="startup,lucene,solr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solr使用入门指南">
+<meta property="og:url" content="http://ikohoo.com/blog/2017/07/19/solr-start/index.html">
+<meta property="og:site_name" content="上海科鹄网络科技有限公司">
+<meta property="og:description" content="本文转自 http://chuanliang2007.spaces.live.com/blog/cns!E5B7AB2851A4C9D2!499.entry?wa=wsignin1.0 由于搜索引擎功能在门户社区中对提高用户体验有着重在门户社区中涉及大量需要搜索引擎的功能需求，目前在实现搜索引擎的方案上有集中方案可供选择：  基于Lucene自己进行封装实现站内搜索。工作量及扩展性都较大，不采用。">
+<meta property="og:updated_time" content="2017-07-19T06:24:34.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Solr使用入门指南">
+<meta name="twitter:description" content="本文转自 http://chuanliang2007.spaces.live.com/blog/cns!E5B7AB2851A4C9D2!499.entry?wa=wsignin1.0 由于搜索引擎功能在门户社区中对提高用户体验有着重在门户社区中涉及大量需要搜索引擎的功能需求，目前在实现搜索引擎的方案上有集中方案可供选择：  基于Lucene自己进行封装实现站内搜索。工作量及扩展性都较大，不采用。">
+  
+    <link rel="alternate" href="/atom.xml" title="上海科鹄网络科技有限公司" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">上海科鹄网络科技有限公司</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">国内领先的云计算和大数据解决方案咨询服务商</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ikohoo.com/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-solr-start" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/07/19/solr-start/" class="article-date">
+  <time datetime="2017-07-19T04:37:37.000Z" itemprop="datePublished">2017-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Solr使用入门指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文转自 <a href="http://chuanliang2007.spaces.live.com/blog/cns!E5B7AB2851A4C9D2!499.entry?wa=wsignin1.0" target="_blank" rel="external">http://chuanliang2007.spaces.live.com/blog/cns!E5B7AB2851A4C9D2!499.entry?wa=wsignin1.0</a></p>
+<p>由于搜索引擎功能在门户社区中对提高用户体验有着重在门户社区中涉及大量需要搜索引擎的功能需求，目前在实现搜索引擎的方案上有集中方案可供选择：</p>
+<ol>
+<li><p>基于Lucene自己进行封装实现站内搜索。工作量及扩展性都较大，不采用。</p>
+</li>
+<li><p>调用Google、Baidu的API实现站内搜索。同第三方搜索引擎绑定太死，无法满足后期业务扩展需要，暂时不采用。</p>
+</li>
+<li><p>基于Compass+Lucene实现站内搜索。适合于对数据库驱动的应用数据进行索引，尤其是替代传统的like ‘%expression%’来实现对varchar或clob等字段的索引，对于实现站内搜索是一种值得采纳的方案。但在分布式处理、接口封装上尚需要自己进行一定程度的封装，暂时不采用。</p>
+</li>
+<li><p>基于Solr实现站内搜索。封装及扩展性较好，提供了较为完备的解决方案，因此在门户社区中采用此方案，后期加入Compass方案。</p>
+</li>
+</ol>
+<a id="more"></a>
+<p>1、 Solr简介</p>
+<p>Solr是一个基于Lucene的Java搜索引擎服务器。Solr 提供了层面搜索、命中醒目显示并且支持多种输出格式（包括 XML/XSLT 和 JSON 格式）。它易于安装和配置，而且附带了一个基于 HTTP 的管理界面。Solr已经在众多大型的网站中使用，较为成熟和稳定。Solr 包装并扩展了 Lucene，所以Solr的基本上沿用了Lucene的相关术语。更重要的是，Solr 创建的索引与 Lucene 搜索引擎库完全兼容。通过对Solr 进行适当的配置，某些情况下可能需要进行编码，Solr 可以阅读和使用构建到其他 Lucene 应用程序中的索引。此外，很多 Lucene 工具（如Nutch、 Luke）也可以使用Solr 创建的索引。</p>
+<p>2、 Tomcat下Solr安装配置<br>由于Solr基于java开发，因此Solr在windows及Linux都能较好部署使用，但由于Solr提供了一些用于测试及管理、维护较为方便的shell脚本，因此在生产部署时候建议安装在linux上，测试时候可以在windows使用。</p>
+<p>下面以Linux下安装配置Solr进行说明，windows与此类似。<br>wget <a href="http://apache.mirror.phpchina.com/tomcat/tomcat-6/v6.0.16/bin/apache-tomcat-6.0.16.zip" target="_blank" rel="external">http://apache.mirror.phpchina.com/tomcat/tomcat-6/v6.0.16/bin/apache-tomcat-6.0.16.zip</a><br>unzip apache-tomcat-6.0.16.zip<br>mv apache-tomcat-6.0.16 /opt/tomcat<br>chmod 755 /opt/tomcat/bin/*<br>wget <a href="http://apache.mirror.phpchina.com/lucene/solr/1.2/apache-solr-1.2.0.tgz" target="_blank" rel="external">http://apache.mirror.phpchina.com/lucene/solr/1.2/apache-solr-1.2.0.tgz</a><br>tar zxvf apache-solr-1.2.0.tgz</p>
+<p>Solr的安装配置最为麻烦的是对solr.solr.home的理解和配置，主要有三种</p>
+<p>基于当前路径的方式<br>cp apache-solr-1.2.0/dist/apache-solr-1.2.0.war /opt/tomcat/webapps/solr.war<br>mkdir /opt/solr-tomcat<br>cp -r apache-solr-1.2.0/example/solr/ /opt/solr-tomcat/<br>cd /opt/solr-tomcat<br>/opt/tomcat/bin/startup.sh</p>
+<p>由于在此种情况下（没有设定solr.solr.home环境变量或JNDI的情况下），Solr查找./solr，因此在启动时候需要切换到/opt/solr-tomcat</p>
+<p>基于环境变量solr.solr.home<br>在当前用户的环境变量中（.bash_profile）或在/opt/tomcat/catalina.sh中添加如下环境变量<br>export JAVA_OPTS=”$JAVA_OPTS -Dsolr.solr.home=/opt/solr-tomcat/solr”</p>
+<p>基于JNDI配置<br>mkdir –p /opt/tomcat/conf/Catalina/localhost<br>touch /opt/tomcat/conf/Catalina/localhost/solr.xml ，内容如下:</p>
+<p>Xml代码 复制代码</p>
+<context docbase="/opt/tomcat/webapps/solr.war" debug="0" crosscontext="true"><br>  <environment name="solr/home" type="java.lang.String" value="/opt/solr-tomcat/solr" override="true"><br></environment></context>  
+
+
+<p>访问solr管理界面 <a href="http://ip:port/solr" target="_blank" rel="external">http://ip:port/solr</a></p>
+<p>3、 Solr原理</p>
+<p>Solr对外提供标准的http接口来实现对数据的索引的增加、删除、修改、查询。在 Solr 中，用户通过向部署在servlet 容器中的 Solr Web 应用程序发送 HTTP 请求来启动索引和搜索。Solr 接受请求，确定要使用的适当SolrRequestHandler，然后处理请求。通过 HTTP 以同样的方式返回响应。默认配置返回Solr 的标准 XML 响应，也可以配置Solr 的备用响应格式。</p>
+<p>可以向 Solr 索引 servlet 传递四个不同的索引请求：<br>add/update 允许向 Solr 添加文档或更新文档。直到提交后才能搜索到这些添加和更新。<br>commit 告诉 Solr，应该使上次提交以来所做的所有更改都可以搜索到。<br>optimize 重构 Lucene 的文件以改进搜索性能。索引完成后执行一下优化通常比较好。如果更新比较频繁，则应该在使用率较低的时候安排优化。一个索引无需优化也可以正常地运行。优化是一个耗时较多的过程。<br>delete 可以通过 id 或查询来指定。按 id 删除将删除具有指定 id 的文档；按查询删除将删除查询返回的所有文档。</p>
+<p>一个典型的Add请求报文</p>
+<p>Xml代码 复制代码</p>
+<add><br>  <doc><br>    <field name="id">TWINX2048-3200PRO</field><br>    <field name="name">CORSAIR  XMS 2GB (2 x 1GB) 184-Pin DDR SDRAM Unbuffered DDR 400 (PC 3200) Dual Channel Kit System Memory - Retail</field><br>    <field name="manu">Corsair Microsystems Inc.</field><br>    <field name="cat">electronics</field><br>    <field name="cat">memory</field><br>    <field name="features">CAS latency 2, 2-3-3-6 timing, 2.75v, unbuffered, heat-spreader</field><br>    <field name="price">185</field><br>    <field name="popularity">5</field><br>    <field name="inStock">true</field><br>  </doc><br>  <doc><br>    <field name="id">VS1GB400C3</field><br>    <field name="name">CORSAIR ValueSelect 1GB 184-Pin DDR SDRAM Unbuffered DDR 400 (PC 3200) System Memory - Retail</field><br>    <field name="manu">Corsair Microsystems Inc.</field><br>    <field name="cat">electronics</field><br>    <field name="cat">memory</field><br>    <field name="price">74.99</field><br>    <field name="popularity">7</field><br>    <field name="inStock">true</field><br>  </doc><br></add><br>一个典型的搜索结果报文：<br><br>Xml代码 复制代码<br><response><br>    <lst name="responseHeader"><br>        <int name="status">0</int><br>        <int name="QTime">6</int><br>        <lst name="params"><br>            <str name="rows">10</str><br>            <str name="start">0</str><br>            <str name="fl"><em>,score</em></str><br>            <str name="hl">true</str><br>            <str name="q">content:”faceted browsing”</str><br>        </lst><br>    </lst><br><br>    <result name="response" numfound="1" start="0" maxscore="1.058217"><br>        <doc><br>            <float name="score">1.058217</float><br>            <arr name="all"><br>                <str><a href="http://localhost/myBlog/solr-rocks-again.html" target="_blank" rel="external">http://localhost/myBlog/solr-rocks-again.html</a></str><br>                <str>Solr is Great</str><br>                <str>solr,lucene,enterprise,search,greatness</str><br>                <str>Solr has some really great features, like faceted browsing and replication</str><br>            </arr><br>            <arr name="content"><br>                <str>Solr has some really great features, like faceted browsing and replication</str><br>            </arr><br>            <date name="creationDate">2007-01-07T05:04:00.000Z</date><br>            <arr name="keywords"><br>                <str>solr,lucene,enterprise,search,greatness</str><br>            </arr><br>            <int name="rating">8</int><br>            <str name="title">Solr is Great</str><br>            <str name="url"><a href="http://localhost/myBlog/solr-rocks-again.html" target="_blank" rel="external">http://localhost/myBlog/solr-rocks-again.html</a></str><br>        </doc><br>    </result><br><br>    <lst name="highlighting"><br>        <lst name="http://localhost/myBlog/solr-rocks-again.html"><br>            <arr name="content"><br>                <str>Solr has some really great features, like <em>faceted</em><br>                <em>browsing</em> and replication</str><br>            </arr><br>        </lst><br>    </lst><br></response><br><br>关于solr的详细使用说明，请参考<br><a href="http://wiki.apache.org/solr/FrontPage" target="_blank" rel="external">http://wiki.apache.org/solr/FrontPage</a><br><br>4、 Solr测试使用<br><br>Solr的安装包包含了相关的测试样例，路径在apache-solr-1.2.0/example/exampledocs<br><br>1. 使用shell脚本（curl）测试Solr的操作：<br>cd apache-solr-1.2.0/example/exampledocs<br>vi post.sh，根据tomcat的ip、port修改URL变量的值URL=<a href="http://localhost:8080/solr/update" target="_blank" rel="external">http://localhost:8080/solr/update</a><br>./post.sh .xml                 #<br><br>2. 使用Solr的java 包测试Solr的操作：<br>查看帮助：java -jar post.jar –help<br>提交测试数据：<br>java -Durl=<a href="http://localhost:8080/solr/update" target="_blank" rel="external">http://localhost:8080/solr/update</a> -Ddata=files -jar post.jar  *.xml<br><br>下面以增加索引字段liangchuan、url为例，说明一下Solr中索引命令的使用<br><br>1) 修改solr的schema，配置需要索引字段的说明：<br>vi /opt/solr-tomcat/solr/conf/schema.xml ,在<fields>中增加如下内容<br><br>Xml代码 复制代码<br><field name="liangchuan" type="string" indexed="true" stored="true"><br><field name="url" type="string" indexed="true" stored="true"><br>[xml] view plain copy<br><field name="liangchuan" type="string" indexed="true" stored="true"><br><field name="url" type="string" indexed="true" stored="true"><br><br>2) 创建增加索引请求的xml测试文件<br>touch /root/apache-solr-1.2.0/example/exampledocs/liangchuan.xml,内容如下：<br><br>Xml代码 复制代码<br><add><br>  <doc><br>    <field name="id">liangchuan000</field><br>    <field name="name">Solr, the Enterprise Search Server</field><br>    <field name="manu">Apache Software Foundation</field><br>    <field name="liangchuan">liangchuan’s solr “hello,world” test</field><br>    <field name="url"><a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a></field><br>  </doc><br></add>  
+
+<p>3) 提交索引请求<br>cd apache-solr-1.2.0/example/exampledocs<br>./post.sh liangchuan.xml</p>
+<p>4) 查询<br>通过solr的管理员界面<a href="http://localhost:8080/solr/admin查询" target="_blank" rel="external">http://localhost:8080/solr/admin查询</a><br>或通过curl 测试：<br>export URL=”<a href="http://localhost:8080/solr/select/" target="_blank" rel="external">http://localhost:8080/solr/select/</a>“<br>curl “$URL?indent=on&amp;q=liangchuan&amp;fl=*,score”</p>
+<p>5、Solr查询条件参数说明<br>参数     描述     示例<br>q    </p>
+<p>Solr 中用来搜索的查询。可以通过追加一个分号和已索引且未进行断词的字段的名称来包含排序信息。默认的排序是 score desc，指按记分降序排序。<br>q=myField:Java AND otherField:developerWorks; date asc<br>此查询搜索指定的两个字段并根据一个日期字段对结果进行排序。</p>
+<p>start     将初始偏移量指定到结果集中。可用于对结果进行分页。默认值为 0。<br>start=15<br>返回从第 15 个结果开始的结果。</p>
+<p>rows     返回文档的最大数目。默认值为 10。     rows=25</p>
+<p>fq     提供一个可选的筛选器查询。查询结果被限制为仅搜索筛选器查询返回的结果。筛选过的查询由 Solr 进行缓存。它们对提高复杂查询的速度非常有用。<br>任何可以用 q 参数传递的有效查询，排序信息除外。</p>
+<p>hl     当 hl=true 时，在查询响应中醒目显示片段。默认为 false。参看醒目显示参数上的 Solr Wiki 部分可以查看更多选项     hl=true</p>
+<p>fl     作为逗号分隔的列表指定文档结果中应返回的 Field 集。默认为 “<em>”，指所有的字段。“score” 指还应返回记分。     
+</em>,score</p>
+<p>其中关于Solr查询相关的参数详细的信息请参看：<br><a href="http://wiki.apache.org/solr/CommonQueryParameters" target="_blank" rel="external">http://wiki.apache.org/solr/CommonQueryParameters</a></p>
+<p>Solr的查询条件参数q的格式与Lucene相同，具体参看：<br><a href="http://lucene.apache.org/java/docs/queryparsersyntax.html" target="_blank" rel="external">http://lucene.apache.org/java/docs/queryparsersyntax.html</a></p>
+<p>支持一下吆 请收藏一下：很好<br>6、 在门户社区中solr使用模式<br>在门户社区中需要使用solr，可采用如下模式：</p>
+<p>对原有系统已有的数据或需要索引的数据量较大的情况<br>直接采用通过http方式调用solr的接口方式，效率较差，采用solr本身对csv 的支持（<a href="http://wiki.apache.org/solr/UpdateCSV" target="_blank" rel="external">http://wiki.apache.org/solr/UpdateCSV</a><br>），将数据导出为csv格式，然后调用solr的csv接口<a href="http://localhost:8080/solr/update/csv" target="_blank" rel="external">http://localhost:8080/solr/update/csv</a></p>
+<p>对系统新增的数据<br>先将需要索引查询的数据组装成xml格式，然后使用httpclient 将数据提交到solr 的http接口，例如<br><a href="http://localhost:8080/solr/update" target="_blank" rel="external">http://localhost:8080/solr/update</a></p>
+<p>也可以参考post.jar中的SimplePostTool的实现。<br><a href="http://svn.apache.org/viewvc/lucene/solr/trunk/src/java/org/apache/solr/util/SimplePostTool.java?view=co" target="_blank" rel="external">http://svn.apache.org/viewvc/lucene/solr/trunk/src/java/org/apache/solr/util/SimplePostTool.java?view=co</a></p>
+<p>中文分词<br>采用庖丁解牛作为solr（Lucene）缺省的中文分词方案<br>项目库：<a href="http://code.google.com/p/paoding/" target="_blank" rel="external">http://code.google.com/p/paoding/</a></p>
+<p>Google groups：<a href="http://groups.google.com/group/paoding" target="_blank" rel="external">http://groups.google.com/group/paoding</a><br>Javaeye的groups：<a href="http://analysis.group.javaeye.com/" target="_blank" rel="external">http://analysis.group.javaeye.com/</a></p>
+<p>与nutch的集成使用<br><a href="http://blog.foofactory.fi/2007/02/online-indexing-integrating-nutch-with.html" target="_blank" rel="external">http://blog.foofactory.fi/2007/02/online-indexing-integrating-nutch-with.html</a></p>
+<p>嵌入式Solr<br><a href="http://wiki.apache.org/solr/Solrj#EmbeddedSolrServer" target="_blank" rel="external">http://wiki.apache.org/solr/Solrj#EmbeddedSolrServer</a></p>
+<p>分布式索引<br><a href="http://wiki.apache.org/solr/CollectionDistribution" target="_blank" rel="external">http://wiki.apache.org/solr/CollectionDistribution</a></p>
+<p>7、参考资料<br><a href="http://wiki.apache.org/solr/" target="_blank" rel="external">http://wiki.apache.org/solr/</a><br><a href="http://www.ibm.com/developerworks/cn/java/j-solr1/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-solr1/</a><br><a href="http://www.ibm.com/developerworks/cn/java/j-solr2/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-solr2/</a><br><a href="http://www.xml.com/pub/a/2006/08/09/solr-indexing-xml-with-lucene-andrest.html?page=1" target="_blank" rel="external">http://www.xml.com/pub/a/2006/08/09/solr-indexing-xml-with-lucene-andrest.html?page=1</a><br><a href="http://lucene.apache.org/java/docs/queryparsersyntax.html" target="_blank" rel="external">http://lucene.apache.org/java/docs/queryparsersyntax.html</a><br><a href="http://www.blogjava.NET/RongHao/archive/2007/11/06/158621.html" target="_blank" rel="external">http://www.blogjava.NET/RongHao/archive/2007/11/06/158621.html</a></p>
+</field></field></field></field></fields>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ikohoo.com/blog/2017/07/19/solr-start/" data-id="cj5amse5v001dbotkdd6vwvjz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/lucene/">lucene</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/solr/">solr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/startup/">startup</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/07/15/markdown-start/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Markdown 11种基本语法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/AI/">AI</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/CloudCompute/">CloudCompute</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/Efficiency/">Efficiency</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/skills/">skills</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Big-Data/">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CloudCompute/">CloudCompute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CloudStack/">CloudStack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Efficiency/">Efficiency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Eucalyptus/">Eucalyptus</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/FusionCloud/">FusionCloud</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HBase/">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hadoop/">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hive/">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Openstack/">Openstack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Resource/">Resource</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Slack/">Slack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spark/">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Team-Management/">Team Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Wiki/">Wiki</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/cloudcompute/">cloudcompute</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/lucene/">lucene</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/solr/">solr</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/startup/">startup</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/AI/" style="font-size: 10px;">AI</a> <a href="/blog/tags/Big-Data/" style="font-size: 18px;">Big Data</a> <a href="/blog/tags/CloudCompute/" style="font-size: 16px;">CloudCompute</a> <a href="/blog/tags/CloudStack/" style="font-size: 10px;">CloudStack</a> <a href="/blog/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/blog/tags/Efficiency/" style="font-size: 14px;">Efficiency</a> <a href="/blog/tags/Eucalyptus/" style="font-size: 10px;">Eucalyptus</a> <a href="/blog/tags/FusionCloud/" style="font-size: 10px;">FusionCloud</a> <a href="/blog/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/blog/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/blog/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/blog/tags/Openstack/" style="font-size: 10px;">Openstack</a> <a href="/blog/tags/Resource/" style="font-size: 10px;">Resource</a> <a href="/blog/tags/Slack/" style="font-size: 12px;">Slack</a> <a href="/blog/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/blog/tags/Team-Management/" style="font-size: 14px;">Team Management</a> <a href="/blog/tags/Wiki/" style="font-size: 20px;">Wiki</a> <a href="/blog/tags/cloudcompute/" style="font-size: 10px;">cloudcompute</a> <a href="/blog/tags/lucene/" style="font-size: 10px;">lucene</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/solr/" style="font-size: 10px;">solr</a> <a href="/blog/tags/startup/" style="font-size: 14px;">startup</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/06/">六月 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2017/07/19/solr-start/">Solr使用入门指南</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/07/15/markdown-start/">Markdown 11种基本语法</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/07/07/how-to-learn-bigdata/">怎样进行大数据的入门级学习？</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/07/03/remote-team/">Zapier 创始人：想要带好远程团队，你需要这样一份管理指南</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2017/06/05/slack-tutorial/">Slack完整教学与上手心得：找到正确的团队沟通之道</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Leo.Liu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>
