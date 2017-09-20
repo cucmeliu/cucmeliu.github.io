@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Eucalyptus | 上海科鹄网络科技有限公司</title>
+  <title>CentOS下yum安装LAMP | 上海科鹄网络科技有限公司</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="科鹄网络 | 云计算 | 大数据 | 人工智能 | 咨询">
-<meta property="og:type" content="website">
-<meta property="og:title" content="上海科鹄网络科技有限公司">
-<meta property="og:url" content="http://ikohoo.com/blog/tags/Eucalyptus/index.html">
+  <meta name="description" content="CentOS下yum安装LAMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS下yum安装LAMP">
+<meta property="og:url" content="http://ikohoo.com/blog/2017/09/19/centos-lamp/index.html">
 <meta property="og:site_name" content="上海科鹄网络科技有限公司">
-<meta property="og:description" content="科鹄网络 | 云计算 | 大数据 | 人工智能 | 咨询">
+<meta property="og:description" content="CentOS下yum安装LAMP">
+<meta property="og:updated_time" content="2017-09-19T05:49:35.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="上海科鹄网络科技有限公司">
-<meta name="twitter:description" content="科鹄网络 | 云计算 | 大数据 | 人工智能 | 咨询">
+<meta name="twitter:title" content="CentOS下yum安装LAMP">
+<meta name="twitter:description" content="CentOS下yum安装LAMP">
   
     <link rel="alternate" href="/atom.xml" title="上海科鹄网络科技有限公司" type="application/atom+xml">
   
@@ -66,39 +67,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2015/08/01/20150801Eucalyptus/" class="archive-article-date">
-  <time datetime="2015-08-01T08:56:54.000Z" itemprop="datePublished">8月 1</time>
+        <section id="main"><article id="post-centos-lamp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/09/19/centos-lamp/" class="article-date">
+  <time datetime="2017-09-19T05:45:51.000Z" itemprop="datePublished">2017-09-19</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/08/01/20150801Eucalyptus/">Eucalyptus</a>
+    <h1 class="article-title" itemprop="name">
+      CentOS下yum安装LAMP
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CentOS下yum安装LAMP</p>
+<a id="more"></a>
+<h1 id="1-用yum安装Apache-Mysql-PHP"><a href="#1-用yum安装Apache-Mysql-PHP" class="headerlink" title="1. 用yum安装Apache,Mysql,PHP."></a>1. 用yum安装Apache,Mysql,PHP.</h1><h2 id="1-1安装Apache"><a href="#1-1安装Apache" class="headerlink" title="1.1安装Apache"></a>1.1安装Apache</h2><p>yum install httpd httpd-devel<br>安装完成后，用/etc/init.d/httpd start 启动apache<br>设为开机启动:chkconfig httpd on </p>
+<h2 id="1-2-安装mysql"><a href="#1-2-安装mysql" class="headerlink" title="1.2 安装mysql"></a>1.2 安装mysql</h2><p>1.2.1 yum install mysql mysql-server mysql-devel<br>同样，完成后，用/etc/init.d/mysqld start 启动mysql<br>1.2.2 设置mysql密码<br>mysql&gt;; USE mysql;<br>mysql&gt;; UPDATE user SET Password=PASSWORD(‘newpassword’) WHERE user=’root’;<br>mysql&gt;; FLUSH PRIVILEGES;<br>1.2.3 允许远程登录<br>mysql -u root -p<br>Enter Password: <your new="" password=""><br>mysql&gt;GRANT ALL PRIVILEGES ON <em>.</em> TO ‘用户名’@’%’ IDENTIFIED BY ‘密码’ WITH GRANT OPTION;<br>完成后就能用mysql-front远程管理mysql了。<br>1.2.4 设为开机启动<br>chkconfig mysqld on </your></p>
+<h1 id="2-安装php"><a href="#2-安装php" class="headerlink" title="2. 安装php"></a>2. 安装php</h1><p>yum install php php-mysql php-common php-gd php-mbstring php-mcrypt php-devel php-xml<br>/etc/init.d/httpd start </p>
+<h1 id="3-测试一下"><a href="#3-测试一下" class="headerlink" title="3. 测试一下"></a>3. 测试一下</h1><h2 id="3-1-编写测试网页"><a href="#3-1-编写测试网页" class="headerlink" title="3.1 编写测试网页"></a>3.1 编写测试网页</h2><p>在/var/www/html/新建个test.php文件，将以下内容写入，然后保存。<br>&lt;?<br>phpinfo();<br>?&gt; </p>
+<h2 id="3-2-防火墙配置"><a href="#3-2-防火墙配置" class="headerlink" title="3.2 防火墙配置"></a>3.2 防火墙配置</h2><p>a.添加.允许访问端口{21: ftp, 80: http}.<br>iptables -I RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 21 -j ACCEPT<br>iptables -I RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>b.关闭防火墙{不推荐}.<br>service iptables stop<br>c.重置加载防火墙<br>service iptables restart </p>
+<h2 id="3-3-测试"><a href="#3-3-测试" class="headerlink" title="3.3 测试"></a>3.3 测试</h2><p>然后在客户端浏览器里打开<a href="http://serverip/test.php，若能成功显示，则表示安装成功。" target="_blank" rel="external">http://serverip/test.php，若能成功显示，则表示安装成功。</a><br>至此，安装完毕。感慨，yum真是太好用了。<br>CentOS 打开防火墙80端口</p>
+<h1 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h1><p>注意：有时安装好可能无法访问，需要打开80端口<br>很大的原因是防火墙：<br>通过/etc/init.d/iptables status命令查询是否有打开80端口，如果没有可通过两种方式处理：<br>1.修改vi /etc/sysconfig/iptables命令添加使防火墙开放80端口<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>2.关闭防火墙<br>/etc/init.d/iptables stop </p>
+<p>#start 开启 </p>
+<p>#restart 重启<br>永久性关闭防火墙chkconfig –level 35 iptables off</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ikohoo.com/blog/2017/09/19/centos-lamp/" data-id="cj7r6jvt9001d1stkjsmtneb4" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2017/09/19/mysql-user/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mysql用户和权限管理</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         

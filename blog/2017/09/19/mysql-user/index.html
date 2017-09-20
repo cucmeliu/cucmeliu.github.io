@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Eucalyptus | 上海科鹄网络科技有限公司</title>
+  <title>Mysql用户和权限管理 | 上海科鹄网络科技有限公司</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="科鹄网络 | 云计算 | 大数据 | 人工智能 | 咨询">
-<meta property="og:type" content="website">
-<meta property="og:title" content="上海科鹄网络科技有限公司">
-<meta property="og:url" content="http://ikohoo.com/blog/tags/Eucalyptus/index.html">
+  <meta name="description" content="mysql 用户和权限管理操作命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql用户和权限管理">
+<meta property="og:url" content="http://ikohoo.com/blog/2017/09/19/mysql-user/index.html">
 <meta property="og:site_name" content="上海科鹄网络科技有限公司">
-<meta property="og:description" content="科鹄网络 | 云计算 | 大数据 | 人工智能 | 咨询">
+<meta property="og:description" content="mysql 用户和权限管理操作命令">
+<meta property="og:updated_time" content="2017-09-19T05:43:52.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="上海科鹄网络科技有限公司">
-<meta name="twitter:description" content="科鹄网络 | 云计算 | 大数据 | 人工智能 | 咨询">
+<meta name="twitter:title" content="Mysql用户和权限管理">
+<meta name="twitter:description" content="mysql 用户和权限管理操作命令">
   
     <link rel="alternate" href="/atom.xml" title="上海科鹄网络科技有限公司" type="application/atom+xml">
   
@@ -66,39 +67,138 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2015/08/01/20150801Eucalyptus/" class="archive-article-date">
-  <time datetime="2015-08-01T08:56:54.000Z" itemprop="datePublished">8月 1</time>
+        <section id="main"><article id="post-mysql-user" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/09/19/mysql-user/" class="article-date">
+  <time datetime="2017-09-19T05:40:37.000Z" itemprop="datePublished">2017-09-19</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2015/08/01/20150801Eucalyptus/">Eucalyptus</a>
+    <h1 class="article-title" itemprop="name">
+      Mysql用户和权限管理
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>mysql 用户和权限管理操作命令</p>
+<a id="more"></a>
+<h1 id="一-创建用户"><a href="#一-创建用户" class="headerlink" title="一, 创建用户:"></a>一, 创建用户:</h1><p>命令:CREATE USER ‘username’@’host’ IDENTIFIED BY ‘password’;</p>
+<p>说明:username - 你将创建的用户名, host - 指定该用户在哪个主机上可以登陆,如果是本地用户可用localhost, 如果想让该用户可以从任意远程主机登陆,可以使用通配符%. password - 该用户的登陆密码,密码可以为空,如果为空则该用户可以不需要密码登陆服务器.</p>
+<p>例子: CREATE USER ‘username’@’localhost’ IDENTIFIED BY ‘123456’;<br>CREATE USER ‘username’@’192.168.1.101_’ IDENDIFIED BY ‘123456’;<br>CREATE USER ‘username’@’%’ IDENTIFIED BY ‘123456’;<br>CREATE USER ‘username’@’%’ IDENTIFIED BY ‘’;<br>CREATE USER ‘username’@’%’;</p>
+<h1 id="二-授权"><a href="#二-授权" class="headerlink" title="二,授权:"></a>二,授权:</h1><p>命令:GRANT privileges ON databasename.tablename TO ‘username’@’host’</p>
+<p>说明: privileges - 用户的操作权限,如SELECT , INSERT , UPDATE 等(详细列表见该文最后面).如果要授予所的权限则使用ALL.;databasename - 数据库名,tablename-表名,如果要授予该用户对所有数据库和表的相应操作权限则可用<em>表示, 如</em>.*.</p>
+<p>例子: GRANT SELECT, INSERT ON test.user TO ‘username’@’%’;<br>GRANT ALL ON <em>.</em> TO ‘username’@’%’;</p>
+<p>注意:用以上命令授权的用户不能给其它用户授权,如果想让该用户可以授权,用以下命令:<br>GRANT privileges ON databasename.tablename TO ‘username’@’host’ WITH GRANT OPTION;</p>
+<h1 id="三-设置与更改用户密码"><a href="#三-设置与更改用户密码" class="headerlink" title="三.设置与更改用户密码"></a>三.设置与更改用户密码</h1><p>命令:SET PASSWORD FOR ‘username’@’host’ = PASSWORD(‘newpassword’);如果是当前登陆用户用SET PASSWORD = PASSWORD(“newpassword”);</p>
+<p>例子: SET PASSWORD FOR ‘username’@’%’ = PASSWORD(“123456”);</p>
+<h1 id="四-撤销用户权限"><a href="#四-撤销用户权限" class="headerlink" title="四.撤销用户权限"></a>四.撤销用户权限</h1><p>命令: REVOKE privilege ON databasename.tablename FROM ‘username’@’host’;</p>
+<p>说明: privilege, databasename, tablename - 同授权部分.</p>
+<p>例子: REVOKE SELECT ON <em>.</em> FROM ‘username’@’%’;</p>
+<p>注意: 假如你在给用户’username’@’%’授权的时候是这样的(或类似的):GRANT SELECT ON test.user TO ‘username’@’%’, 则在使用REVOKE SELECT ON <em>.</em> FROM ‘username’@’%’;命令并不能撤销该用户对test数据库中user表的SELECT 操作.相反,如果授权使用的是GRANT SELECT ON <em>.</em> TO ‘username’@’%’;则REVOKE SELECT ON test.user FROM ‘username’@’%’;命令也不能撤销该用户对test数据库中user表的Select 权限.</p>
+<p>具体信息可以用命令SHOW GRANTS FOR ‘username’@’%’; 查看.</p>
+<h1 id="五-删除用户"><a href="#五-删除用户" class="headerlink" title="五.删除用户"></a>五.删除用户</h1><p>命令: DROP USER ‘username’@’host’;</p>
+<h1 id="附表-在MySQL中的操作权限"><a href="#附表-在MySQL中的操作权限" class="headerlink" title="附表:在MySQL中的操作权限"></a>附表:在MySQL中的操作权限</h1><p>ALTER</p>
+<p>Allows use of ALTER TABLE.</p>
+<p>ALTER ROUTINE</p>
+<p>Alters or drops stored routines.</p>
+<p>CREATE</p>
+<p>Allows use of CREATE TABLE.</p>
+<p>CREATE ROUTINE</p>
+<p>Creates stored routines.</p>
+<p>CREATE TEMPORARY TABLE</p>
+<p>Allows use of CREATE TEMPORARY TABLE.</p>
+<p>CREATE USER</p>
+<p>Allows use of CREATE USER, DROP USER, RENAME USER, and REVOKE ALL PRIVILEGES.</p>
+<p>CREATE VIEW</p>
+<p>Allows use of CREATE VIEW.</p>
+<p>DELETE</p>
+<p>Allows use of DELETE.</p>
+<p>DROP</p>
+<p>Allows use of DROP TABLE.</p>
+<p>EXECUTE</p>
+<p>Allows the user to run stored routines.</p>
+<p>FILE</p>
+<p>Allows use of SELECT… INTO OUTFILE and LOAD DATA INFILE.</p>
+<p>INDEX</p>
+<p>Allows use of CREATE INDEX and DROP INDEX.</p>
+<p>INSERT</p>
+<p>Allows use of INSERT.</p>
+<p>LOCK TABLES</p>
+<p>Allows use of LOCK TABLES on tables for which the user also has SELECT privileges.</p>
+<p>PROCESS</p>
+<p>Allows use of SHOW FULL PROCESSLIST.</p>
+<p>RELOAD</p>
+<p>Allows use of FLUSH.</p>
+<p>REPLICATION</p>
+<p>Allows the user to ask where slave or master</p>
+<p>CLIENT</p>
+<p>servers are.</p>
+<p>REPLICATION SLAVE</p>
+<p>Needed for replication slaves.</p>
+<p>SELECT</p>
+<p>Allows use of SELECT.</p>
+<p>SHOW DATABASES</p>
+<p>Allows use of SHOW DATABASES.</p>
+<p>SHOW VIEW</p>
+<p>Allows use of SHOW CREATE VIEW.</p>
+<p>SHUTDOWN</p>
+<p>Allows use of mysqladmin shutdown.</p>
+<p>SUPER</p>
+<p>Allows use of CHANGE MASTER, KILL, PURGE MASTER LOGS, and SET GLOBAL SQL statements. Allows mysqladmin debug command. Allows one extra connection to be made if maximum connections are reached.</p>
+<p>UPDATE</p>
+<p>Allows use of UPDATE.</p>
+<p>USAGE</p>
+<p>Allows connection without any specific privileges.</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>MySql中添加用户,新建数据库,用户授权,删除用户,修改密码<br>查看已有用户：<br>select user,host,password from mysql.user;</p>
+<p>1.新建用户。<br>//登录MYSQL<br>@&gt;mysql -u root -p<br>@&gt;密码<br>//创建用户<br>mysql&gt; mysql&gt; insert into mysql.user(Host,User,Password,ssl_cipher,x509_issuer,x509_sub<br>ject) values(“localhost”,”phplamp”,password(“1234”),’’,’’,’’);<br>这样就创建了一个名为：phplamp 密码为：1234 的用户。<br>然后登录一下。<br>mysql&gt;exit;<br>@&gt;mysql -u phplamp -p<br>@&gt;输入密码<br>mysql&gt;登录成功<br>2.为用户授权。<br>//登录MYSQL（有ROOT权限）。我里我以ROOT身份登录.<br>@&gt;mysql -u root -p<br>@&gt;密码<br>//首先为用户创建一个数据库(phplampDB)<br>mysql&gt;create database phplampDB;<br>//授权phplamp用户拥有phplamp数据库的所有权限。 </p>
+<blockquote>
+<p>grant all privileges on phplampDB.<em> to phplamp@localhost identified by ‘1234’;<br>//刷新系统权限表<br>mysql&gt;flush privileges;<br>mysql&gt;其它操作<br>/</em><br>如果想指定部分权限给一用户，可以这样来写:<br>mysql&gt;grant select,update on phplampDB.<em> to phplamp@localhost identified by ‘1234’;<br>//刷新系统权限表。<br>mysql&gt;flush privileges; 
+</em>/<br>3.删除用户。<br>@&gt;mysql -u root -p<br>@&gt;密码<br>mysql&gt;Delete FROM user Where User=”phplamp” and Host=”localhost”;<br>mysql&gt;flush privileges;<br>//删除用户的数据库<br>mysql&gt;drop database phplampDB;<br>4.修改指定用户密码。<br>@&gt;mysql -u root -p<br>@&gt;密码<br>mysql&gt;update mysql.user set password=password(‘新密码’) where User=”phplamp” and Host=”localhost”;<br>mysql&gt;flush privileges;<br>5.列出所有数据库<br>mysql&gt;show database;<br>6.切换数据库<br>mysql&gt;use ‘数据库名’;<br>7.列出所有表<br>mysql&gt;show tables;<br>8.显示数据表结构<br>mysql&gt;describe 表名;<br>9.删除数据库和数据表<br>mysql&gt;drop database 数据库名;</p>
+</blockquote>
+<p>注意，如果数据库名包含“.”，那么在删除时需要加上引用引号，如</p>
+<p>dropo database <code>php.sql</code>;</p>
+<p>mysql&gt;drop table 数据表名;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ikohoo.com/blog/2017/09/19/mysql-user/" data-id="cj7r6jvu600211stkc45fqqy7" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2017/09/19/centos-lamp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CentOS下yum安装LAMP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2017/09/18/unicode/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Unicode(UTF-8, UTF-16)令人混淆的概念</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
