@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>HBase | 上海科鹄网络科技有限公司</title>
+  <title>搭建数据仓库的流程简介 | 上海科鹄网络科技有限公司</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本简介HBase是一个分布式的、面向列的开源数据库，该技术来源于 Fay Chang 所撰写的Google论文”Bigtable:一个结构化数据的分布式存储系统”。就像Bigtable利用了Google文件系统(File System)所提供的分布式数据存储一样，HBase在Hadoop之上提供了类似于Bigtable的能力。HBase是Apache的Hadoop项目的子项目。HBase不同于一">
-<meta name="keywords" content="Wiki,Big Data,HBase">
+  <meta name="description" content="数据仓库的目的，是对组织的数据进行统一的治理，归纳来讲，就是：存、通、用。　　· 存：是指数据的统一存储。数据放在一起了，meta才能在一起，便于后续的计算。　　· 通：是指数据的梳理，集中式的数据存储自然而然带来数据的集中管理。便于企业梳理内部的数据，这个是最能刺痛规模比较大，业务比较繁杂的企业的。　　· 用：就是在梳理好内部数据资产后，可以看到那些数据可以做链接。那些业务可以合作。自己还缺少哪">
+<meta name="keywords" content="数据仓库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HBase">
-<meta property="og:url" content="http://ikohoo.com/blog/2016/03/06/20160306Hbase/index.html">
+<meta property="og:title" content="搭建数据仓库的流程简介">
+<meta property="og:url" content="http://ikohoo.com/blog/2017/11/17/build-warehouse/index.html">
 <meta property="og:site_name" content="上海科鹄网络科技有限公司">
-<meta property="og:description" content="基本简介HBase是一个分布式的、面向列的开源数据库，该技术来源于 Fay Chang 所撰写的Google论文”Bigtable:一个结构化数据的分布式存储系统”。就像Bigtable利用了Google文件系统(File System)所提供的分布式数据存储一样，HBase在Hadoop之上提供了类似于Bigtable的能力。HBase是Apache的Hadoop项目的子项目。HBase不同于一">
-<meta property="og:updated_time" content="2017-07-04T03:20:14.009Z">
+<meta property="og:description" content="数据仓库的目的，是对组织的数据进行统一的治理，归纳来讲，就是：存、通、用。　　· 存：是指数据的统一存储。数据放在一起了，meta才能在一起，便于后续的计算。　　· 通：是指数据的梳理，集中式的数据存储自然而然带来数据的集中管理。便于企业梳理内部的数据，这个是最能刺痛规模比较大，业务比较繁杂的企业的。　　· 用：就是在梳理好内部数据资产后，可以看到那些数据可以做链接。那些业务可以合作。自己还缺少哪">
+<meta property="og:image" content="http://osiclndlk.bkt.clouddn.com/datawarehouse.jpg">
+<meta property="og:updated_time" content="2017-11-17T07:27:51.313Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HBase">
-<meta name="twitter:description" content="基本简介HBase是一个分布式的、面向列的开源数据库，该技术来源于 Fay Chang 所撰写的Google论文”Bigtable:一个结构化数据的分布式存储系统”。就像Bigtable利用了Google文件系统(File System)所提供的分布式数据存储一样，HBase在Hadoop之上提供了类似于Bigtable的能力。HBase是Apache的Hadoop项目的子项目。HBase不同于一">
+<meta name="twitter:title" content="搭建数据仓库的流程简介">
+<meta name="twitter:description" content="数据仓库的目的，是对组织的数据进行统一的治理，归纳来讲，就是：存、通、用。　　· 存：是指数据的统一存储。数据放在一起了，meta才能在一起，便于后续的计算。　　· 通：是指数据的梳理，集中式的数据存储自然而然带来数据的集中管理。便于企业梳理内部的数据，这个是最能刺痛规模比较大，业务比较繁杂的企业的。　　· 用：就是在梳理好内部数据资产后，可以看到那些数据可以做链接。那些业务可以合作。自己还缺少哪">
+<meta name="twitter:image" content="http://osiclndlk.bkt.clouddn.com/datawarehouse.jpg">
   
     <link rel="alternate" href="/atom.xml" title="上海科鹄网络科技有限公司" type="application/atom+xml">
   
@@ -68,14 +70,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-20160306Hbase" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-build-warehouse" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2016/03/06/20160306Hbase/" class="article-date">
-  <time datetime="2016-03-06T08:27:25.000Z" itemprop="datePublished">2016-03-06</time>
+    <a href="/blog/2017/11/17/build-warehouse/" class="article-date">
+  <time datetime="2017-11-17T07:05:22.000Z" itemprop="datePublished">2017-11-17</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/Big-Data/">Big Data</a>
+    <a class="article-category-link" href="/blog/categories/数据仓库/">数据仓库</a>
   </div>
 
   </div>
@@ -86,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      HBase
+      搭建数据仓库的流程简介
     </h1>
   
 
@@ -94,34 +96,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="基本简介"><a href="#基本简介" class="headerlink" title="基本简介"></a>基本简介</h2><p>HBase是一个分布式的、面向列的开源数据库，该技术来源于 Fay Chang 所撰写的Google论文”Bigtable:一个结构化数据的分布式存储系统”。就像Bigtable利用了Google文件系统(File System)所提供的分布式数据存储一样，HBase在Hadoop之上提供了类似于Bigtable的能力。HBase是Apache的Hadoop项目的子项目。HBase不同于一般的关系数据库，它是一个适合于非结构化数据存储的数据库。另一个不同的是HBase基于列的而不是基于行的模式。</p>
+        <p>数据仓库的目的，是对组织的数据进行统一的治理，归纳来讲，就是：存、通、用。<br>　　· 存：是指数据的统一存储。数据放在一起了，meta才能在一起，便于后续的计算。<br>　　· 通：是指数据的梳理，集中式的数据存储自然而然带来数据的集中管理。便于企业梳理内部的数据，这个是最能刺痛规模比较大，业务比较繁杂的企业的。<br>　　· 用：就是在梳理好内部数据资产后，可以看到那些数据可以做链接。那些业务可以合作。自己还缺少哪些数据。</p>
 <a id="more"></a>
-<h2 id="结构介绍"><a href="#结构介绍" class="headerlink" title="结构介绍"></a>结构介绍</h2><p>HBase – Hadoop Database，是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。</p>
-<p>与FUJITSU Cliq等商用大数据产品不同，HBase是Google Bigtable的开源实现，类似Google Bigtable利用GFS作为其文件存储系统，HBase利用Hadoop HDFS作为其文件存储系统;Google运行MapReduce来处理Bigtable中的海量数据，HBase同样利用Hadoop MapReduce来处理HBase中的海量数据;Google Bigtable利用 Chubby作为协同服务，HBase利用Zookeeper作为对应。</p>
-<p>上图描述Hadoop EcoSystem中的各层系统。其中,HBase位于结构化存储层，Hadoop HDFS为HBase提供了高可靠性的底层存储支持，Hadoop MapReduce为HBase提供了高性能的计算能力，Zookeeper为HBase提供了稳定服务和failover机制。</p>
-<p>此外，Pig和Hive还为HBase提供了高层语言支持，使得在HBase上进行数据统计处理变的非常简单。 Sqoop则为HBase提供了方便的RDBMS数据导入功能，使得传统数据库数据向HBase中迁移变的非常方便。</p>
-<h2 id="访问接口"><a href="#访问接口" class="headerlink" title="访问接口"></a>访问接口</h2><ol>
-<li><p>Native Java API，最常规和高效的访问方式，适合Hadoop MapReduce Job并行批处理HBase表数据</p>
-</li>
-<li><p>HBase Shell，HBase的命令行工具，最简单的接口，适合HBase管理使用</p>
-</li>
-<li><p>Thrift Gateway，利用Thrift序列化技术，支持C++，PHP，Python等多种语言，适合其他异构系统在线访问HBase表数据</p>
-</li>
-<li><p>REST Gateway，支持REST 风格的Http API访问HBase, 解除了语言限制</p>
-</li>
-<li><p>Pig，可以使用Pig Latin流式编程语言来操作HBase中的数据，和Hive类似，本质最终也是编译成MapReduce Job来处理HBase表数据，适合做数据统计</p>
-</li>
-<li><p>Hive，当前Hive的Release版本尚没有加入对HBase的支持，但在下一个版本Hive 0.7.0中将会支持HBase，可以使用类似SQL语言来访问HBase</p>
-</li>
-</ol>
+<p>　　如何搭建一个数据仓库？ 下面大体说明了搭建的流程。<br>　　数据仓库的结构<br>　　用一幅图来表示：</p>
+<p><img src="http://osiclndlk.bkt.clouddn.com/datawarehouse.jpg" alt="alt text" title="Title"></p>
+<p>　　数据仓库的好处<br>　　数据仓库是一套体系。可以建在Oracle上，MySQL上，Hive上，MaxCompute上，具体建在哪个平台根据数据量来定。对数据仓库来说，建在哪个平台不重要，重要的是目的。<br>　　数据仓库的目的，是对组织的数据进行统一的治理，归纳来讲，就是：存、通、用。<br>　　· 存：是指数据的统一存储。数据放在一起了，meta才能在一起，便于后续的计算。<br>　　· 通：是指数据的梳理，集中式的数据存储自然而然带来数据的集中管理。便于企业梳理内部的数据，这个是最能刺痛规模比较大，业务比较繁杂的企业的。<br>　　· 用：就是在梳理好内部数据资产后，可以看到那些数据可以做链接。那些业务可以合作。自己还缺少哪些数据。<br>　　存偏向于存储，通偏向于数据管理，用偏向于数据计算，也就是业务创新。<br>　　业务的野蛮生长总会遇到瓶颈，这个时候就需要有内在驱动的业务创新。数据是指导组织二次创业的好依据。<br>　　主要的流程<br>　　简单的来说，就是包括：数据源、ODS、DW（DM）、报告这几部分。<br>　　主要有这么几个流程：<br>　　1、数据源到ODS，需要考虑：<br>　　· 数据源的平台有哪些，比如Oracle，MySQL，文本文件，每个平台有哪些可用的同步工具<br>　　· 数据有哪些，数据字典有没有<br>　　· 哪些表全量同步<br>　　· 哪些表增量同步，如何取增量数据<br>　　· 同步周期，按小时，按天，按周，按月？<br>　　· 数据量评估：存量数据有多大，增量数据每天有多少<br>　　· 历史保留多久<br>　　· 数据正确性校验<br>　　· 调度、监控、报警<br>　　2、ODS到DW(DM)，刚开始可以考虑建立数据集市(DM)，待对数据，对业务足够理解，人足够多的时候，考虑建立数据仓库(DW)，需要考虑：<br>　　· 熟悉数据字典，理解业务，理解数据<br>　　· 事实表要建哪些<br>　　· 维度表要建哪些<br>　　· 更新周期，按小时，按天，按周，按月？<br>　　· 数据量评估：存量数据有多大，增量数据每天有多少<br>　　· 历史保留多久<br>　　· 验数<br>　　· 调度、监控、报警<br>　　3、报告，这个是给业务、决策层看的，是体现价值的地方<br>　　· 统计口径的确定<br>　　· 验数：验证数据是否正确<br>　　· 如何展示：是表格、图形，还是大屏？<br>　　用到的工具<br>　　在建设数据仓库的时候，需要使用一系列的工具。<br>　　1、数据源到ODS<br>　　· ETL工具，比如kettle<br>　　2、ODS到DW(DM)<br>　　· SQL<br>　　3、报告<br>　　· 报表平台<br>　　整个流程通过 调度工具 串起来<br>　　调度工具需要解决：<br>　　· 任务依赖<br>　　· 周期性执行<br>　　· 监控，报警<br>　　· 日志<br>　　后续的工作<br>　　迭代！<br>　　迭代！<br>　　迭代！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ikohoo.com/blog/2016/03/06/20160306Hbase/" data-id="cja3l1mqm000k4stkp6bm3peg" class="article-share-link">Partager</a>
+      <a data-url="http://ikohoo.com/blog/2017/11/17/build-warehouse/" data-id="cja3l1mqz000u4stkhtc66g3v" class="article-share-link">Partager</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Big-Data/">Big Data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/HBase/">HBase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Wiki/">Wiki</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/数据仓库/">数据仓库</a></li></ul>
 
     </footer>
   </div>
@@ -129,19 +116,10 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2016/05/01/20160501Hive/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
-        
-          Hive
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2016/03/01/20160301Hadoop/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2017/09/19/centos-lamp/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">Apache Hadoop</div>
+      <div class="article-nav-title">CentOS下yum安装LAMP</div>
     </a>
   
 </nav>
